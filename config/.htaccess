@@ -1,0 +1,13 @@
+# ============================================================
+# Folder ini hanya boleh diakses lewat require_once() di dalam PHP
+# (internal include, bukan HTTP request), jadi aman diblokir total
+# dari akses langsung via curl/browser tanpa mengganggu aplikasi.
+# ============================================================
+
+<IfModule mod_authz_core.c>
+    Require all denied
+</IfModule>
+<IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+</IfModule>

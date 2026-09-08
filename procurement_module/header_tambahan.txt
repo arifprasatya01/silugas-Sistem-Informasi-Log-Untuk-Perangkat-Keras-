@@ -1,0 +1,8 @@
+Tambahkan menu ini di includes/header.php,
+setelah baris menu "Laporan" (sebelum penutup </ul>):
+
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= APP_URL ?>/procurement_list">
+                        <i class="bi bi-cart-check me-1"></i>Pengadaan
+                    </a>
+                </li>

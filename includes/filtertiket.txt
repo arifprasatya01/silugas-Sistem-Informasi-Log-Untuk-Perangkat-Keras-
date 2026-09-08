@@ -1,0 +1,10 @@
+komputer
+printer
+mouse
+keyboard
+monitor
+cpu
+laptop
+scanner
+proyektor
+ups

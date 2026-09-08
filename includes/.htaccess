@@ -1,0 +1,13 @@
+# ============================================================
+# Folder ini berisi auth.php (termasuk fungsi CSRF), header.php,
+# footer.php - semuanya dipanggil lewat require_once() di PHP,
+# jadi aman diblokir total dari akses langsung via curl/browser.
+# ============================================================
+
+<IfModule mod_authz_core.c>
+    Require all denied
+</IfModule>
+<IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+</IfModule>

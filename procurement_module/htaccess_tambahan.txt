@@ -1,0 +1,7 @@
+Tambahkan 4 baris ini ke dalam blok RewriteRule di .htaccess,
+setelah baris "RewriteRule ^berita_acara$ pages/berita_acara.php [L,QSA]":
+
+    RewriteRule ^procurement_list$ pages/procurement_list.php [L,QSA]
+    RewriteRule ^procurement_add$ pages/procurement_add.php [L,QSA]
+    RewriteRule ^procurement_detail$ pages/procurement_detail.php [L,QSA]
+    RewriteRule ^procurement_print$ pages/procurement_print.php [L,QSA]

@@ -1,0 +1,68 @@
+# ============================================================
+# RM Hardware Monitoring - .htaccess (root)
+# Tujuan: mencegah akses langsung (curl/browser) ke file sensitif
+# TIDAK memblokir pages/ dan api/ karena memang diakses langsung
+# ============================================================
+# Matikan directory listing (biar folder tidak bisa dibrowse isinya)
+Options -Indexes
+# Blokir akses langsung ke file berdasarkan ekstensi sensitif
+<FilesMatch "\.(sql|log|env|ini|bak|old|zip|md|gitignore)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
+# Jaga-jaga kalau ada config.php / db.php nyasar di root
+<FilesMatch "^(config|db)\.php$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
+# ============================================================
+# Pretty URL - sembunyikan folder "pages/" dan ekstensi ".php"
+# Contoh: /hardware/dashboard  ->  /hardware/pages/dashboard.php
+# Query string (?code=xxx) otomatis ikut terbawa.
+# ============================================================
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    # Jangan rewrite kalau memang file/folder aslinya ada (assets, api, config, dll)
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^dashboard$ pages/dashboard.php [L,QSA]
+    RewriteRule ^token_generate$ pages/token_generate.php [L,QSA]
+    RewriteRule ^asset_list$ pages/asset_list.php [L,QSA]
+    RewriteRule ^scan$ pages/scan.php [L,QSA]
+    RewriteRule ^report$ pages/report.php [L,QSA]
+    RewriteRule ^logbook$ pages/logbook.php [L,QSA]
+    RewriteRule ^sync$ pages/sync.php [L,QSA]
+    RewriteRule ^print_logbook$ pages/print_logbook.php [L,QSA]
+    RewriteRule ^location_manage$ pages/location_manage.php [L,QSA]
+    RewriteRule ^qr_bulk$ pages/qr_bulk.php [L,QSA]
+    RewriteRule ^print_by_location$ pages/print_by_location.php [L,QSA]
+    RewriteRule ^user_manage$ pages/user_manage.php [L,QSA]
+    RewriteRule ^profile$ pages/profile.php [L,QSA]
+    RewriteRule ^asset_detail$ pages/asset_detail.php [L,QSA]
+    RewriteRule ^asset_edit$ pages/asset_edit.php [L,QSA]
+    RewriteRule ^asset_add$ pages/asset_add.php [L,QSA]
+    RewriteRule ^asset_register$ pages/asset_register.php [L,QSA]
+    RewriteRule ^asset_print_label$ pages/asset_print_label.php [L,QSA]
+    RewriteRule ^print_form$ pages/print_form.php [L,QSA]
+    RewriteRule ^sign_serah$ pages/sign_serah.php [L,QSA]
+    RewriteRule ^sign_tim_it$ pages/sign_tim_it.php [L,QSA]
+    RewriteRule ^save_tim_it_sig$ pages/save_tim_it_sig.php [L,QSA]
+    RewriteRule ^berita_acara$ pages/berita_acara.php [L,QSA]
+    RewriteRule ^403$ pages/403.php [L,QSA]
+    RewriteRule ^procurement_list$ pages/procurement_list.php [L,QSA]
+    RewriteRule ^procurement_add$ pages/procurement_add.php [L,QSA]
+    RewriteRule ^procurement_detail$ pages/procurement_detail.php [L,QSA]
+    RewriteRule ^procurement_print$ pages/procurement_print.php [L,QSA]
+      RewriteRule ^ttd_bulanan$ pages/ttd_bulanan.php [L,QSA]
+    RewriteRule ^ttd_public$ pages/ttd_public.php [L,QSA]
+</IfModule>
