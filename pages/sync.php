@@ -25,8 +25,8 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 csrf_verify();
 
 // ================== KONFIGURASI ==================
-$localUrl = 'http://10.100.1.220/wa_message_bailey_sync/sync.php';
-$apiKey   = 'RSUDk4r4w4ng'; // harus sama dengan $apiKey di sync.php lokal
+$localUrl = '';
+$apiKey   = ''; // harus sama dengan $apiKey di sync.php lokal
 // ===================================================
 
 // -- 1) Curl ke server lokal, kirim api_key via query string --
