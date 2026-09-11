@@ -25,12 +25,12 @@ if (!function_exists('str_ends_with')) {
 date_default_timezone_set('Asia/Jakarta');
 
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'rsud_simrs');
-define('DB_USER', 'rsud_simrs');         // Ganti dengan user MySQL kamu
-define('DB_PASS', 'Rsudk4r4w4ng');             // Ganti dengan password MySQL kamu
+define('DB_NAME', 'root');
+define('DB_USER', 'silugas');         // Ganti dengan user MySQL kamu
+define('DB_PASS', '');             // Ganti dengan password MySQL kamu
 define('DB_CHARSET', 'utf8mb4');
 define('APP_NAME', 'SILUGAS ');
-define('APP_URL', 'https://simrs.rsudkarawang.com/hardware'); // Ganti dengan URL kamu
+define('APP_URL', 'domain'); // Ganti dengan URL kamu
 define('APP_VERSION', '1.0.0');
 function getDB() {
     static $pdo = null;
